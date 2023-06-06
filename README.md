@@ -10,4 +10,3 @@
 # Created using terraform first attempt ("output from terraform")
 <br>
 <img src="./REsouceMap-terraform.PNG"> 
-("output from terraform")
