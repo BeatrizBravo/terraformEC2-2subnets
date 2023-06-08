@@ -8,7 +8,7 @@ resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 
   tags = {
-    Name = "my-vpc"
+    Name = "Hoisin-duck-wrap BB.4 from Terraform"
   }
 }
 
@@ -18,7 +18,7 @@ resource "aws_subnet" "public" {
   cidr_block = "10.0.1.0/24"
 
   tags = {
-    Name = "my-public-subnet"
+    Name = "hoisin-public-subnet"
   }
 }
 
@@ -28,7 +28,7 @@ resource "aws_subnet" "private" {
   cidr_block = "10.0.2.0/24"
 
   tags = {
-    Name = "my-private-subnet"
+    Name = "hoisin-private-subnet"
   }
 }
 
@@ -42,7 +42,7 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "my-public-route-table"
+    Name = "hoisin-public-route-table"
   }
 }
 
@@ -57,7 +57,7 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "my-internet-gateway"
+    Name = "hoisin-internet-gateway"
   }
 }
 
@@ -67,13 +67,13 @@ resource "aws_nat_gateway" "nat" {
   subnet_id     = aws_subnet.public.id
 
   tags = {
-    Name = "my-nat-gateway"
+    Name = "hoisin-nat-gateway"
   }
 }
 
 # 9. Create an Elastic IP for the NAT Gateway
 resource "aws_eip" "nat" {
-  vpc = true
+  domain = "vpc"
 }
 
 # 10. Create a route table for the private subnet
@@ -86,7 +86,7 @@ resource "aws_route_table" "private" {
   }
 
   tags = {
-    Name = "my-private-route-table"
+    Name = "hoisin-private-route-table"
   }
 }
 
@@ -112,7 +112,7 @@ resource "aws_instance" "public" {
   }
 
   tags = {
-    Name = "my-public-instance"
+    Name = "Hoisin-Duck-public-instance"
   }
 }
 
@@ -132,13 +132,13 @@ resource "aws_instance" "private" {
   }
 
   tags = {
-    Name = "my-private-instance"
+    Name = "Hoisin-Duck-private-instance"
   }
 }
 
 # 14. Create a security group to allow incoming traffic to the EC2 instances
 resource "aws_security_group" "sg" {
-  name        = "my-security-group"
+  name        = "Hoisin-security-group"
   description = "Allow incoming traffic to the EC2 instances"
   vpc_id      = aws_vpc.main.id
 
