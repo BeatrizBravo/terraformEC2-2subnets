@@ -8,11 +8,17 @@ This project  creates a VPC in the eu-north-1 region of AWS with two subnets (on
 ```
 Terraform Ec2 - with 2 subnet/
 ├── ansible/
+│   ├── files/
+│   │   ├── private_index.html
+│   │   └── public_index.html
+│   ├── templates/
+│   │   └── nginx.conf.j2
 │   ├── inventory.ini
 │   └── playbook.yml
 └── terraform/
     ├── main.tf
     └── inventory.tpl
+
 ```
 
 
