@@ -98,8 +98,8 @@ resource "aws_route_table_association" "private" {
 
 # 12. Create an EC2 instance in the public subnet
 resource "aws_instance" "public" {
-  ami           = "ami-017ff17a3b372f3d8" # AMI ID for Ubuntu Server 22.04 LTS in eu-north-1
-  instance_type = "t2.micro"
+  ami           = "ami-0989fb15ce71ba39e" # AMI ID for Ubuntu Server 22.04 LTS in eu-north-1
+  instance_type = "t3.micro"
   key_name      = "bb-key"
 
   subnet_id              = aws_subnet.public.id
@@ -118,8 +118,8 @@ resource "aws_instance" "public" {
 
 # 13. Create an EC2 instance in the private subnet
 resource "aws_instance" "private" {
-  ami           = "ami-017ff17a3b372f3d8" # AMI ID for Ubuntu Server 22.04 LTS in eu-north-1
-  instance_type = "t2.micro"
+  ami           = "ami-0989fb15ce71ba39e" # AMI ID for Ubuntu Server 22.04 LTS in eu-north-1
+  instance_type = "t3.micro"
   key_name      = "bb-key"
 
   subnet_id              = aws_subnet.private.id
