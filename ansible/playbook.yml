@@ -1,0 +1,43 @@
+# 1. Target the public EC2 instance
+- hosts: webserver_public
+  become: yes
+  tasks:
+    # 2. Install Nginx on the public EC2 instance
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    # 3. Copy the index.html file to the public EC2 instance
+    - name: Copy index.html
+      copy:
+        src: file/public_index.html
+        dest: /var/www/html/index.html
+
+    # 4. Configure Nginx as a reverse proxy to the private EC2 instance
+    - name: Configure Nginx reverse proxy
+      template:
+        src: templates/nginx.conf.j2
+        dest: /etc/nginx/sites-available/default
+
+    # 5. Restart Nginx to apply the changes
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+
+# 6. Target the private EC2 instance
+- hosts: webserver_private
+  become: yes
+  tasks:
+    # 7. Install Apache on the private EC2 instance
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+
+    # 8. Copy the index.html file to the private EC2 instance
+    - name: Copy index.html
+      copy:
+        src: files/private_index.html
+        dest: /var/www/html/index.html
