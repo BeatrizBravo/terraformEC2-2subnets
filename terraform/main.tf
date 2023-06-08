@@ -8,7 +8,7 @@ resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 
   tags = {
-    Name = "Hoisin-duck-wrap BB.4 from Terraform"
+    Name = "Hoisin-duck-wrap BB.5 from Terraform"
   }
 }
 
@@ -101,6 +101,7 @@ resource "aws_instance" "public" {
   ami           = "ami-0989fb15ce71ba39e" # AMI ID for Ubuntu Server 22.04 LTS in eu-north-1
   instance_type = "t3.micro"
   key_name      = "bb-key"
+  associate_public_ip_address = true
 
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.sg.id]
